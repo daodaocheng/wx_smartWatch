@@ -1,0 +1,108 @@
+<!--pages/healthData/healthData.wxml-->
+<view class='top_list'>
+  <text bindtap='calendar' class='cal_text'>{{calendar}}</text>
+</view>
+<view class='calendar' style='width: 100%; height: auto'>
+  <view wx:if="{{showView}}" style="width: 100%; height: auto" class="datepicker-box">
+    <calendar binddayClick="dayClick" bindnextMonth="next" bindprevMonth="prev" year="{{year}}" month="{{month}}" day="{{day}}" binddateChange="dateChange" weeks-type='cn' days-color="{{days_style}}"></calendar>
+  </view>
+</view>
+<view wx:if="{{showModal}}" class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove"></view>
+<modal class='modal' confirm-text='确定' catchtouchmove='true' bindcancel='modalCancleTime' hidden='{{modalTime}}' bindconfirm='modalChangeTime'>
+  <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindModalTimeChange" bindcancel="bindTimeCancle">
+    <view class='modal_time_text'>
+      <text class='time_input'>{{time}}</text>
+    </view>
+  </picker>
+  <view class='picker_tip'>
+    <text class='picker_tip_text'>请点击上方文字选择时间</text>
+  </view>
+</modal>
+<view class="mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+<modal class="modal-warn" hidden="{{modalHiddenTip}}" catchtouchmove='true' no-cancel bindconfirm="modalChangeTip">{{tip}}</modal>
+<view class="modal-mask_warn" bindtap="hideModal" catchtouchmove="reue" wx:if="{{showModal}}"></view>
+<view class='body-view-loading'>
+  <loading hidden="{{loadHidden}}">
+    等待后台响应中...
+  </loading>
+</view>
+
+<modal class='modal-warn' title='点击测量后,手表使用者需维持稳定坐姿五分钟左右，注意不要有手臂摆动' catchtouchmove='true' confirm-text="测量" cancel-text="取消" hidden='{{testmodal}}' bindconfirm='testmodalChange' bindcancel='testmodalCancle'>
+</modal>
+
+<view class="modal-mask_lodding" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{!showFailModal}}"></view>
+<modal class="modal-warn" hidden="{{showFailModal}}" no-cancel bindconfirm="modalFailChangeTip">{{loadding_tip}}</modal>
+
+<view class="modal-mask_warn" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{!showFailModalWarn}}"></view>
+<modal class="modal-warn" hidden="{{showFailModalWarn}}" no-cancel bindconfirm="modalFailChangeTipWarn">{{warn_tip}}</modal>
+
+<view scroll-y='true' class='scroll-view' style='height: 100%; width: 100%;' bindscroll='scrollCanvas' scroll-top="{{scrollTop}}">
+  <view class='chart_group_sport' bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler">
+    <view class='title_s'>
+      <text>运动</text>
+    </view>
+    <view class='sportList'>
+      <view class='listItem'>
+        <view class='detail'>{{miles}}</view>
+        <view class='title_sport'>公里</view>
+      </view>
+      <view class='listItem'>
+        <view class='detail'>{{steps}}</view>
+        <view class='title_sport'>步</view>
+      </view>
+    </view>
+  </view>
+  <view class='list'>
+    <view class="list__body list__{{mode}}">
+      <view class="list__title--main">健康监测提醒</view>
+      <view class='switch_list'>
+        <switch class="tui-fr" checked="{{isChecked_measure}}" bindchange="changeSwitch_measure" />
+      </view>
+      <slot></slot>
+    </view>
+    <view class='time_list' wx:if="{{showTime}}">
+      <view class="list__title--sub">提醒时间</view>
+      <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange" bindcancel="bindTimeCancle">
+        <view>
+          <text class='tip_text'>更新时间请点击下方的时间数字</text>
+        </view>
+        <view class='time_text'>
+          <text class='time_input'>{{time}}</text>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class='list_test'>
+    <view class="list__body list__{{mode}}" bindtap="onClickTest">
+      <view class="list__title--main">健康数据测量</view>
+      <slot></slot>
+    </view>
+  </view>
+  <view class='chart_group' wx:if="{{showCanvases}}">
+    <view class='title'>
+      <text class='info_font'>血压</text>
+    </view>
+    <view class="container">
+      <!-- <canvas canvas-id="lineCanvasPressure" class="canvas" disable-scroll='false' capture-bindtouchstart="touchHandler" capture-bindtouchmove="moveHandler" capture-bindtouchend="touchEndHandler"></canvas> -->
+      <ec-canvas class='ec-canvas-pause' style='width: {{chartWidth}};' id="mychart-dom-pause" canvas-id="lineCanvasPressure" ec="{{ec_pause}}"></ec-canvas>
+    </view>
+  </view>
+  <view class='chart_group' wx:if="{{showCanvases}}" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler">
+    <view class='title'>
+      <text class='info_font'>心率</text>
+    </view>
+    <view class="container">
+      <!-- <canvas canvas-id="lineCanvasRate" class="canvas" disable-scroll='false' capture-bindtouchstart="touchHandler" capture-bindtouchmove="moveHandler" capture-bindtouchend="touchEndHandler"></canvas> -->
+      <ec-canvas class='ec-canvas-rate' style='width: {{chartWidth}};' id="mychart-dom-rate" canvas-id="lineCanvasRate" ec="{{ ec_rate }}"></ec-canvas>
+    </view>
+  </view>
+  <view class='chart_group' wx:if="{{showCanvases}}" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler">
+    <view class='title'>
+      <text class='info_font'>血氧</text>
+    </view>
+    <view class="container">
+      <!-- <canvas canvas-id="lineCanvasContent" class="canvas" disable-scroll='false' capture-bindtouchstart="touchHandler" capture-bindtouchmove="moveHandler" capture-bindtouchend="touchEndHandler"></canvas> -->
+      <ec-canvas class='ec-canvas-cotent' style='width: {{chartWidth}};' id="mychart-dom-content" canvas-id="lineCanvasContent" ec="{{ ec_content }}"></ec-canvas>
+    </view>
+  </view>
+</view>

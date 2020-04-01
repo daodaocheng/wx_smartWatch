@@ -1,0 +1,37 @@
+<!--pages/robot/robot.wxml-->
+<wxc-notice scroll="{{false}}" close="{{false}}" bg-color="#ff2a00" bg-rgba="rgba(255, 147, 0, 0)" show-icon="{{false}}" notice="{{notice}}" isShow='{{showNotice}}'></wxc-notice>
+<view class='news'>
+  <view class='xiahuaxian1 xiahuaxia'></view>
+  <view class="historycon"   id='chat'>
+    <scroll-view scroll-y="true" scroll-x='false'  wx:for='{{talks}}' class="history" wx:key='id'>
+        <view>
+          <text class='time'>{{item.time}}</text>
+        </view>
+        <block wx:if="{{!item.is_server}}">
+          <view class='my_right'>
+            <view class='page_row'>
+              <image style='width:70rpx;height:70rpx;float:right' src='{{headImage.globalData.userInfo.avatarUrl}}' class='new_imgtent'></image>
+              <view class='new_txt_my' style='float:left'>
+                <text>{{item.mess}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='you_left'>
+            <view class='page_row'>
+              <view class='new_txt' style='float:right'>
+                <text>{{item.mess}}</text>
+              </view>
+              <image style='width:70rpx;height:70rpx;float:left' src='/assets/robot_chat.png' class='new_imgtent'></image>
+            </view>
+          </view>
+        </block>
+    </scroll-view>
+  </view>
+</view>
+<view class='hei' id="hei"></view>
+<view class="sendmessage">
+  <input type="text" bindinput="bindChange" focus='true' style='width:75%' confirm-type="done" value='{{news_input_val}}' placeholder="发送消息" />
+  <button style='margin:0 20rpx; width:25%;background-color: #01baff;color: #FFF;' bindtap='send' class='send'>发送</button>
+</view>

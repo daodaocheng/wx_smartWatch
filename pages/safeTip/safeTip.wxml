@@ -1,0 +1,3 @@
+<!--pages/safeTip/safeTip.wxml-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<modal class="modal-warn" hidden="{{modalHiddenTip}}" no-cancel bindconfirm="modalChangeTip">{{tip}}</modal>

@@ -1,0 +1,94 @@
+<!--pages/watchSet/watchSet.wxml-->
+<view>
+  <view class='list'>
+    <view class="list__body list__{{mode}}" data-rel='{{desc_ship}}' bindtap="onClickRel">
+      <view class="list__title--main">与我关系</view>
+      <view class="list__desc--text">{{desc_ship}}</view>
+      <slot></slot>
+    </view>
+  </view>
+  <view class='list'>
+    <view class="list__body list__{{mode}}" data-tel='{{desc_num}}' bindtap="onClickonClickTel">
+      <view class="list__title--main">手表电话号码</view>
+      <view class="list__desc--text">{{desc_num}}</view>
+      <slot></slot>
+    </view>
+  </view>
+  <view class='list'>
+    <view class="list__body list__{{mode}}" data-health='{{desc_health}}' bindtap="onClickonClickHealth">
+      <view class="list__title--main">手表使用者健康状况</view>
+      <view class="list__desc--text">{{desc_health}}</view>
+      <slot></slot>
+    </view>
+  </view>
+  <view class='list'>
+    <view class="list__body list__{{mode}}">
+      <view class="list__title--main">自动接听</view>
+      <switch class="tui-fr" checked="{{isChecked_call}}" bindchange="changeSwitch_call" />
+      <slot></slot>
+    </view>
+  </view>
+  <view class='list'>
+    <view class="list__body list__{{mode}}">
+      <view class="list__title--main">短信提醒</view>
+      <switch class="tui-fr" checked="{{isChecked_message}}" bindchange="changeSwitch_message" />
+      <slot></slot>
+    </view>
+  </view>
+  <view class='list'>
+    <view class="list__body list__{{mode}}" bindtap="onClickBoot">
+      <view class="list__title--main">远程关机</view>
+      <slot></slot>
+    </view>
+  </view>
+  <view class='body-view-loading'>
+    <loading hidden="{{loadHidden}}">
+      等待后台响应中...
+    </loading>
+  </view>
+
+  <view class='body-view-toast'>
+    <toast hidden="{{toastHidden}}" duration="2000" bindchange="toastChange">{{toastTip}}</toast>
+  </view>
+
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{!showFailModal}}"></view>
+  <modal class="modal-warn" hidden="{{showFailModal}}" no-cancel bindconfirm="modalFailChangeTip">后台响应失败</modal>
+  <view class='list'>
+    <view class="list__body list__{{mode}}" bindtap="onClickContect">
+      <view class="list__title--main">手表通讯录</view>
+      <view class="list__desc--text"></view>
+      <slot></slot>
+      <wxc-icon wx:if="{{arrow}}" class="list__desc--arrow" type="arrow-right" size="30" color="#c2c2c2" _pid="{{_pid}}"></wxc-icon>
+    </view>
+  </view>
+</view>
+<modal class='modal' title='更新关系' confirm-text='更新' cancel-text="取消" hidden='{{relmodal}}' bindconfirm='relmodalChange' bindcancel='relmodalCancle'>
+  <view class="input-wrap">
+    <wxc-input type="text" value="{{rel}}" placeholder="输入关系" bind:input="relInput" bind:blur="onBlur">
+    </wxc-input>
+  </view>
+</modal>
+<modal class='modal' title='更新号码' confirm-text='更新' cancel-text="取消" hidden='{{telmodal}}' bindconfirm='telmodalChange' bindcancel='telmodalCancle'>
+  <view class="input-wrap">
+    <wxc-input type="number" value="{{tel}}" placeholder="输入新号码" bind:input="telInput" bind:blur="onBlur">
+    </wxc-input>
+  </view>
+</modal>
+<modal class='modal' title='更新健康状况' confirm-text='更新' cancel-text="取消" hidden='{{healthmodal}}' bindconfirm='healthmodalChange' bindcancel='healthmodalCancle'>
+  <!-- <view class="input-wrap">
+    <wxc-input value="{{health}}" placeholder="输入最近的健康状况" bind:input="healthInput" bind:blur="onBlur">
+    </wxc-input>
+  </view> -->
+  <checkbox-group bindchange="checkboxChange" class='checkbox-group-health'>
+    <label class="checkbox" wx:for="{{sicknesses}}">
+      <checkbox value="{{item.value}}" checked="{{item.checked}}" />{{item.value}}
+    </label>
+  </checkbox-group>
+</modal>
+<modal class='modal' title='是否确认关机？' confirm-text='确定' cancel-text="取消" hidden='{{bootmodal}}' bindconfirm='bootmodalChange' bindcancel='bootmodalCancle'>
+</modal>
+<modal class="modal-warn" hidden="{{showModal}}" no-cancel bindconfirm="modalChangeTip">{{tip}}</modal>
+<view class="modal-mask" bindtap="hideMaskModal" catchtouchmove="preventTouchMove" wx:if="{{!showModal}}"></view>
+
+<modal class="modal-warn" hidden="{{boot}}" no-cancel bindconfirm="bootHide">{{boottip}}</modal>
+<view class="modal-mask" bindtap="boottip" catchtouchmove="preventTouchMove" wx:if="{{!boot}}"></view>

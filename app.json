@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/myInfo/myInfo",
+    "pages/safeArea/safeArea",
+    "pages/watchSet/watchSet",
+    "pages/safeAreaPreview/safeAreaPreview",
+    "pages/healthData/healthData",
+    "pages/healthReport/healthReport",
+    "pages/resetArea/resetArea",
+    "pages/contects/contects",
+    "pages/robot/robot",
+    "pages/accessLog/accessLog",
+    "pages/fallAlarm/fallAlarm",
+    "pages/fallLog/fallLog",
+    "pages/safeTip/safeTip",
+    "pages/trail/trail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#efefef",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 35000,
+    "connectSocket": 30000
+  },
+  "tabBar": {
+    "color": "#99a3a3",
+    "selectedColor": "#69c7f5",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "assets/index_select.png",
+        "iconPath": "assets/index.png",
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "assets/myInfo_select.png",
+        "iconPath": "assets/myInfo.png",
+        "pagePath": "pages/myInfo/myInfo",
+        "text": "我的"
+      },
+      {
+        "selectedIconPath": "assets/robotb.png",
+        "iconPath": "assets/robotg.png",
+        "pagePath": "pages/robot/robot",
+        "text": "小焱"
+      }
+    ]
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

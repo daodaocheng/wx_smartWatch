@@ -1,0 +1,44 @@
+/* pages/accessLog/accessLog.wxss */
+.list {
+  padding-top: 25rpx;
+  padding-right: 50rpx;
+}
+
+.list__body {
+  display: flex;
+  flex-direction: column;
+  min-height: 90rpx;
+  line-height: 1.4;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  margin-top: 25rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 8px;
+  font-size: 32rpx;
+  color: #333;
+  width: 100%;
+}
+
+.list__desc--text {
+  /* border: solid 1px #333; */
+  width: auto;
+  font-size: medium;
+}
+
+.list__none {
+  border: none;
+}
+
+.list__title--main {
+  /* border: solid 1px #333; */
+  width: auto;
+  /* margin-left: 25rpx; */
+  font-size: medium;
+}
+
+.list__desc--arrow {
+  margin-left: 8rpx;
+  width: 10%;
+}

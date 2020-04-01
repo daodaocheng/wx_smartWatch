@@ -1,0 +1,351 @@
+/* pages/healthData/healthData.wxss */
+@import "../../utils/weui.wxss";
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+page {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.page-body {
+  overflow-x: hidden;
+}
+
+.modal_time_text{
+  display: flex;
+  /* text-align: center; */
+  /* padding-left: 198rpx;  */
+  font-size: 40rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info_font{
+  font-size: larger;
+  font-weight: 900;
+}
+
+.modal {
+  position: absolute;
+  z-index: 8999;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 8980;
+  color: #fff;
+}
+
+.modal-warn {
+  position: absolute;
+  z-index: 9999;
+}
+
+.time_input{
+  display: flex;
+  text-align: center;
+  color: #000;
+}
+
+.picker_tip{
+  display: flex;
+  text-align: center; 
+}
+
+.picker_tip_text{
+  color: #ac010e;
+  font-size: small;
+  margin-left: 27%;
+}
+
+.scroll-view {
+  white-space: nowrap;
+  display: block;
+  /* margin-top: 95rpx; */
+  z-index: -1;
+}
+
+.healthCanvas {
+  display: block;
+  z-index: -1;
+}
+
+.chart_group {
+  margin: 2.5%;
+  background-color: #fff;
+  border-radius: 25px;
+  height: 750rpx;
+  /* border: 1px solid red; */
+} 
+
+.title_s{
+  font-size: larger;
+  font-weight: 900;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: medium;
+  height: 120rpx;
+  /* border: 1px solid red; */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600rpx;
+  overflow: scroll;
+  /* border: 1px solid red; */
+}
+
+.canvas {
+  margin-top: 0;
+  height: 100%;
+  width: 99%;
+  overflow: scroll;
+}
+
+/* .calendar{
+  margin-top: 95rpx;
+} */
+
+.top_list {
+  height: 100rpx;
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 8990;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.list {
+  padding-right: 50rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-top: 15rpx;
+}
+
+.list_test {
+  padding-right: 50rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-top: 15rpx;
+  border: 1px solid green;
+}
+
+.list__body {
+  display: flex;
+  /* align-items: center; */
+  min-height: 90rpx;
+  line-height: 1.4;
+  padding: 20rpx 30rpx 20rpx 0px;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 15px;
+  font-size: 32rpx;
+  color: #333;
+  width: 100%;
+  flex-direction: row;
+}
+
+.switch_list{
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  /* border: 1px solid red; */
+  /* text-align: center; */
+}
+
+.time_list{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20rpx;
+  width: 100%
+}
+
+.list__title--main {
+  /* border: solid 1px red; */
+  width: 68%;
+  padding-left: 30rpx;
+  font-size: 40rpx;
+}
+
+.list__title--sub{
+  width: 35%;
+  padding-left: 120rpx;
+  /* padding-left: 40rpx; */
+  float: left;
+  font-size: 33rpx;
+  padding-top: 8rpx;
+}
+
+.time_text{
+  width: 65%;
+  display: flex;
+  padding-left: 225rpx; 
+  font-size: 35rpx;
+}
+
+.cal_text{
+  font-size: 35rpx;
+}
+
+.datepicker-box {
+  display: block;
+  background-color: #fff;
+  position: relative;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #a0a0a0;
+  opacity: 0.7;
+  overflow: hidden;
+  z-index: 2000;
+  color: #fff;
+}
+
+.modal-mask_lodding{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #a0a0a0;
+  opacity: 0.7;
+  overflow: hidden;
+  z-index: 9500;
+  color: #fff;
+}
+
+.modal-mask_warn{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #a0a0a0;
+  opacity: 0.7;
+  overflow: hidden;
+  z-index: 9500;
+  color: #fff;
+}
+
+.calendar {
+  position: relative;
+  z-index: 9000;
+}
+
+.sportList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: row;
+}
+
+.detail {
+  font-size: 50rpx;
+}
+
+.title_sport {
+  margin-top: 20rpx;
+}
+
+.chart_group_sport {
+  margin: 2.5%;
+  background-color: #fff;
+  border-radius: 25px;
+  height: 250rpx;
+}
+
+.title_s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: medium;
+  height: 35%;
+}
+
+.tui-fr {
+  margin-left: 90rpx;
+}
+
+.ec-canvas-pause {
+  position: absolute;
+  top: 825rpx;
+  /* width: 800rpx; */
+  height: 700rpx;
+  bottom: 0;
+  left: 0rpx;
+  right: 0;
+}
+
+.ec-canvas-rate{
+  position: absolute;
+  top: 1600rpx;
+  /* width: 800rpx; */
+  height: 700rpx;
+  bottom: 0;
+  left: 0rpx;
+  right: 0;
+}
+
+.ec-canvas-cotent{
+  position: absolute;
+  top: 2350rpx;
+  /* width: 800rpx; */
+  height: 700rpx;
+  bottom: 0;
+  left: 0rpx;
+  right: 0;
+}
+
+.tip_text{
+  width: 65%;
+  display: flex;
+  padding-left: 100rpx; 
+  font-size: 25rpx;
+  color: #e3231e;
+}
+
+/* .new_time_picker{
+  color: #87020c;
+} */

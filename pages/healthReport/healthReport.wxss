@@ -1,0 +1,177 @@
+/* pages/healthReport/healthReport.wxss */
+.chart_group_steps {
+  margin: 4% 2%;
+  background-color: #fff;
+  border-radius: 50rpx;
+  height: 1500rpx;
+}
+
+.chart_group {
+  margin: 4% 2%;
+  background-color: #fff;
+  border-radius: 50rpx;
+  height: 828rpx;
+  /* border: 1px solid red; */
+}
+
+.chart_group_pause {
+  margin: 4% 2%;
+  background-color: #fff;
+  border-radius: 50rpx;
+  height: 900rpx;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  height: 120rpx;
+  /* border: 1px solid red; */
+}
+
+.title_health {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  height: 120rpx;
+  /* border: 1px solid red; */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600rpx;
+  overflow: scroll;
+  /* border: 1px solid red; */
+}
+
+.container_health_pause {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600rpx;
+  width: auto;
+  overflow: scroll;
+  /* border: 1px solid red; */
+}
+
+.container_health {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600rpx;
+  width: auto;
+  overflow: scroll;
+  /* border: 1px solid red; */
+}
+
+.canvas {
+  margin-top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+.week_info {
+  display: flex;
+  justify-content: center;
+  font-size: smaller;
+  height: 50rpx;
+  padding-bottom: 50rpx;
+  /* border: 1px solid red; */
+}
+
+.day_info {
+  display: flex;
+  justify-content: center;
+  font-size: small;
+  height: 50rpx;
+  /* padding-top: 50rpx; */
+  /* border: 1px solid red; */
+}
+
+.health_info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: small;
+  height: 50rpx;
+  padding-bottom: 30rpx;
+  /* border: 1px solid red; */
+}
+
+.health_info_note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-small;
+  height: 46rpx;
+  padding-bottom: 28rpx;
+  padding-left: 10rpx;
+  /* border: 1px solid red; */
+}
+
+.info_font{
+  font-weight: 900;
+}
+
+.info_font_note{
+  font-weight: 500;
+}
+
+.title_info{
+  font-weight: 900;
+}
+
+.ec-canvas-week-step{
+  position: absolute;
+  /* width: 800rpx; */
+  height: 700rpx;
+  top: 80rpx;
+  bottom: 0;
+  left: -20rpx;
+  right: 0;
+}
+
+.ec-canvas-day-step{
+  position: absolute;
+  /* width: 800rpx; */
+  height: 700rpx;
+  top: 800rpx;
+  bottom: 0;
+  left: -20rpx;
+  right: 0;
+}
+
+.ec-canvas-week-pause{
+  position: absolute;
+  /* width: 800rpx; */
+  height: 700rpx;
+  top: 1600rpx;
+  bottom: 0;
+  left: -20rpx;
+  right: 0;
+}
+
+.ec-canvas-week-rate{
+  position: absolute;
+  /* width: 800rpx; */
+  height: 700rpx; 
+  top: 2550rpx;
+  bottom: 0;
+  left: -20rpx;
+  right: 0;
+}
+
+.ec-canvas-week-content{
+  position: absolute;
+  /* width: 800rpx; */
+  height: 700rpx;
+  top: 3400rpx;
+  bottom: 0;
+  left: -20rpx;
+  right: 0;
+}

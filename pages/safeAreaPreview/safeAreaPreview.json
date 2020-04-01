@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "wxc-input": "../../packages/@minui/wxc-input/dist/index"
+  },
+  "navigationBarTitleText": "安全区预览"
+}

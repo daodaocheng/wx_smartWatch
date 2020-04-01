@@ -1,0 +1,59 @@
+<!--pages/healthReport/healthReport.wxml-->
+<view class='chart_group_steps'>
+  <view class='title'>
+    <text class='title_info'>步数</text>
+  </view>
+  <view class="container" style='width: {{chartWidth}};'>
+    <!-- <canvas canvas-id="lineStepsWeek" class="canvas" disable-scroll='false' capture-bindtouchstart="touchHandler" capture-bindtouchmove="moveHandler" capture-bindtouchend="touchEndHandler"></canvas> -->
+    <ec-canvas class='ec-canvas-week-step' style='width: {{chartWidth}}; height: {{chartHeight}}' id="mychart-dom-week-step" canvas-id="lineCanvasWeekStep" ec="{{ec_week_step}}"></ec-canvas>
+  </view>
+  <view class='week_info'>
+    <text class='info_font'>{{note}}</text>
+  </view>
+  <view class="container" style='width: {{chartWidth}};'>
+    <!-- <canvas canvas-id="columnStepsDay" class="canvas" disable-scroll='false' capture-bindtouchstart="touchHandler" capture-bindtouchmove="moveHandler" capture-bindtouchend="touchEndHandler"></canvas> -->
+    <ec-canvas class='ec-canvas-day-step' style='width: {{chartWidth}};' id="mychart-dom-day-step" canvas-id="lineCanvasDayStep" ec="{{ec_day_step}}"></ec-canvas>
+  </view>
+  <view class='day_info'>
+    <text class='info_font'>{{note_week_step}}</text>
+  </view>
+</view>
+<view class='chart_group_pause'>
+  <view class='title_health'>
+    <text class='title_info'>血压</text>
+  </view>
+  <view class="container_health_pause" style='width: {{chartWidth}};'>
+    <!-- <canvas canvas-id="lineCanvasPressureWeek" class="canvas" disable-scroll='false' capture-bindtouchstart="touchHandler" capture-bindtouchmove="moveHandler" capture-bindtouchend="touchEndHandler"></canvas> -->
+    <ec-canvas class='ec-canvas-week-pause' style='width: {{chartWidth}}; height: {{chartHeight}}' id="mychart-dom-week_pause" canvas-id="lineCanvasPressureWeek" ec="{{ec_week_pause}}"></ec-canvas>
+  </view>
+  <view class='health_info_note'>
+    <text class='info_font_note'>(平均动脉压：一个心动周期中动脉血压的平均值，正常成年人平均动脉压正常值为70~105mmHg。)</text>
+  </view>
+  <view class='health_info'>
+    <text class='info_font'>{{note_week_pause}}</text>
+  </view>
+</view>
+<view class='chart_group' bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler">
+  <view class='title_health'>
+    <text class='title_info'>心率</text>
+  </view>
+  <view class="container_health" style='width: {{chartWidth}};'>
+    <!-- <canvas canvas-id="lineCanvasRateWeek" class="canvas" disable-scroll='false' capture-bindtouchstart="touchHandler" capture-bindtouchmove="moveHandler" capture-bindtouchend="touchEndHandler"></canvas> -->
+    <ec-canvas class='ec-canvas-week-rate' style='width: {{chartWidth}};' id="mychart-dom-week_rate" canvas-id="lineCanvasRateWeek" ec="{{ec_week_rate}}"></ec-canvas>
+  </view>
+  <view class='health_info'>
+    <text class='info_font'>{{note_week_rate}}</text>
+  </view>
+</view>
+<view class='chart_group' bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler">
+  <view class='title_health'>
+    <text class='title_info'>血氧</text>
+  </view>
+  <view class="container_health" style='width: {{chartWidth}};'>
+    <!-- <canvas canvas-id="lineCanvasContentWeek" class="canvas" disable-scroll='false' capture-bindtouchstart="touchHandler" capture-bindtouchmove="moveHandler" capture-bindtouchend="touchEndHandler"></canvas> -->
+    <ec-canvas class='ec-canvas-week-content' style='width: {{chartWidth}}; height: {{chartHeight}}' id="mychart-dom-week_content" canvas-id="lineCanvasContentWeek" ec="{{ec_week_content}}"></ec-canvas>
+  </view>
+  <view class='health_info'>
+    <text class='info_font'>{{note_week_content}}</text>
+  </view>
+</view>

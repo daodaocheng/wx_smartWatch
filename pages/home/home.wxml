@@ -1,0 +1,15 @@
+<wxc-notice scroll="{{false}}" close="{{false}}" bg-color="#ff2a00" bg-rgba="rgba(255, 147, 0, 0)" show-icon="{{false}}" notice="{{notice}}" isShow='{{showNotice}}'></wxc-notice>
+<map id="mapAble"  
+    scale="{{scale}}" 
+    show-location='true' 
+    style="width: 100%; height: 100%" 
+    latitude='{{userLocation.lat}}'
+    longitude='{{userLocation.lon}}'
+    bindcontroltap="controltap"
+    controls='{{controls}}'
+    markers='{{markers}}'
+    wx:if='{{mapAble}}'
+    subKey='S2KBZ-2QYCK-UMAJM-A2ON4-B4UEZ-G3BRL'
+    bindtap='getLocation'
+    bindregionchange='regionChange'> 
+</map>

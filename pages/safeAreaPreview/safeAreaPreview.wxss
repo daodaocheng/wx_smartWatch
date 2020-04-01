@@ -1,0 +1,68 @@
+/* pages/safeAreaPreview/safeAreaPreview.wxss */
+.tip{
+  width: 500rpx;
+  height: 100rpx;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.input-wrap {
+  position: relative;
+  margin: 20rpx 10rpx 0 10rpx;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.input-wrap-new {
+  position: relative;
+  margin: 20rpx 10rpx 0 10rpx;
+}
+
+.safeName{
+  font-size: small;
+  margin-left: 30rpx;
+}
+
+.modalSecond{
+  z-index: 5000;
+}
+
+.input {
+  width: 70%;
+}
+
+.redius_btn {
+  width: 30%;
+  size: mini;
+  margin-left:-30rpx;
+}
+
+.redius_btn::after{
+  border:3px solid #69c7f5;
+}
+
+.reset_btn{
+  margin: 30rpx;
+  border-color: #69c7f5;
+}
+
+.reset_btn::after{
+  border:3px solid #69c7f5;
+}

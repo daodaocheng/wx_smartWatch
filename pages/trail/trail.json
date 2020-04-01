@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wxc-mask": "../../packages/@minui/wxc-mask/dist/index",
+    "calendar": "plugin://calendar/calendar"
+  },
+  "navigationBarTitleText": "运动轨迹"
+}

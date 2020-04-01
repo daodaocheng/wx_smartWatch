@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wxc-notice": "../../packages/@minui/wxc-notice/dist/index"
+  },
+  "navigationBarTitleText": "小焱智能问答",
+  "disableScroll": true
+}

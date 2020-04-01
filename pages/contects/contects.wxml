@@ -1,0 +1,45 @@
+<!--pages/contects/contects.wxml-->
+<view style='height:90%'>
+  <block wx:for="{{contects}}">
+    <view class='list'>
+      <view class="list__body list__{{mode}}" data-id='{{item.id}}' bindlongtap="delContect">
+        <view class="list__title--main">{{item.name}}</view>
+        <view class="list__desc--text">{{item.tel}}</view>
+        <slot></slot>
+      </view>
+    </view>
+  </block>
+</view>
+<view class='footer'>
+  <view class="btn-content">
+    <view class="btn-left" bindtap="ondo" data-status="cancel">新加联系人</view>
+  </view>
+</view>
+
+<modal class='modalSecond' title='添加联系人' confirm-text='确定' cancel-text="取消" hidden='{{con}}' bindconfirm='addTo' bindcancel='modalChangeCancel'>
+  <view class="input-wrap">
+    <wxc-input type="text" src="../../../../assets/info_ralation.png" placeholder="姓名" bind:input="onInputRel" value='{{rel}}' bind:blur="onBlurSecond">
+    </wxc-input>
+    <wxc-input type="number" src="../../../../assets/info_tel_28x40.png" placeholder="请输入联系人的电话号码" data-type="mobile" value='{{tel}}' bind:input="onInputTel" bind:blur="onBlurThird">
+    </wxc-input>
+  </view>
+</modal>
+
+<view class='body-view-loading'>
+  <loading hidden="{{loadHidden}}">
+    等待后台响应中...
+  </loading>
+</view>
+
+<view class='body-view-toast'>
+  <toast hidden="{{toastHidden}}" duration="2000" bindchange="toastChange">{{toastTip}}</toast>
+</view>
+
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{!showFailModal}}"></view>
+<modal class="modal-warn" hidden="{{showFailModal}}" no-cancel bindconfirm="modalFailChangeTip">后台响应失败</modal>
+
+<modal class="modal-warn" hidden="{{showModal}}" no-cancel bindconfirm="modalChangeTip">{{tip}}</modal>
+<view class="modal-mask" bindtap="hideMaskModal" catchtouchmove="preventTouchMove" wx:if="{{!showModal}}"></view>
+
+<modal class='modalSecond' title='确认删除？' confirm-text='确定' cancel-text="取消" hidden='{{confirm}}' bindconfirm='sure' bindcancel='cancel'>
+</modal>

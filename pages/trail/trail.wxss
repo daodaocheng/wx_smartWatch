@@ -1,0 +1,33 @@
+/* pages/trail/trail.wxss */
+.calendar {
+  /* z-index: 9000; */
+}
+
+.calendar_text {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  font-size: medium;
+}
+
+.cal_text{
+  font-size: 35rpx;
+}
+
+.datepicker-box{
+  display: block;
+  background-color: #fff;
+  position:relative;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}

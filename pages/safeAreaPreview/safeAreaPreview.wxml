@@ -1,0 +1,23 @@
+<map id="map"  
+    scale="17" 
+    show-location=true
+    style="width: 100%; height: 75%"
+    latitude='{{safeAreaInfo.lat}}'
+    longitude='{{safeAreaInfo.lon}}'
+    bindcontroltap="controltap"
+    wx:if='{{true}}'
+    subKey='S2KBZ-2QYCK-UMAJM-A2ON4-B4UEZ-G3BRL'
+    circles='{{circle}}'
+    markers = '{{marker}}'
+    bindtap='getLocation'>
+</map>
+<view class='footer'>
+  <view class="input-wrap">
+    <wxc-input class='input' title="安全半径(米):" type="number" value="{{safeAreaInfo.radius}}" placeholder="默认200" maxlength="11" data-type="mobile" bind:input="onInputNum" bind:blur="onBlurThird">
+    </wxc-input>
+    <button class='redius_btn' bindtap='redius_btn'>修改</button>
+  </view>
+  <!-- <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <modal class="modal-warn" catchtouchmove="preventTouchMove" hidden="{{modalHiddenTip}}" no-cancel bindconfirm="modalChangeTip">{{tip}}</modal> -->
+  <button class='reset_btn' bindtap='reset_btn'>重设安全区地点</button>
+</view>

@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "wxc-list": "../../packages/@minui/wxc-list/dist/index",
+    "wxc-avatar": "../../packages/@minui/wxc-avatar/dist/index",
+    "wxc-icon": "../../packages/@minui/wxc-icon/dist/index",
+    "wxc-popup": "../../packages/@minui/wxc-popup/dist/index",
+    "wxc-input": "../../packages/@minui/wxc-input/dist/index",
+    "wxc-button": "../../packages/@minui/wxc-button/dist/index",
+    "wxc-notice": "../../packages/@minui/wxc-notice/dist/index"
+  },
+  "navigationBarTitleText": "我的"
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wxc-icon": "../../packages/@minui/wxc-icon/dist/index",
+    "wxc-input": "../../packages/@minui/wxc-input/dist/index"
+  },
+  "navigationBarTitleText": "手表设置"
+}

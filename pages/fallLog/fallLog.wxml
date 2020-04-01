@@ -1,0 +1,10 @@
+<!--pages/fallLog/fallLog.wxml-->
+<view class='list'>
+  <block wx:for="{{titleFallLog}}">
+    <view class="list__body list__{{mode}}">
+      <view class="list__title--main">{{item.time}}</view>
+      <view class="list__desc--text">{{item.ship}}疑似在{{item.addr}}出现摔倒的情况</view>
+      <slot></slot>
+    </view>
+  </block>
+</view>

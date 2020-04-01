@@ -1,0 +1,28 @@
+<!--pages/fallAlarm/fallAlarm.wxml-->
+<view class='list'>
+  <view class="list__body list__{{mode}}" bindtap="onClick">
+    <view class="list__title--main">设置</view>
+    <view class="input-wrap">
+      <wxc-input title="通知手机" mode:="wrapped" type="number" value="{{notifytel}}" placeholder="" bind:input="notifytel" bind:blur="onBlurSecond">
+      </wxc-input>
+    </view>
+    <slot></slot>
+    <button size='mini' style='width: 25%; height: 10%;text-size:small; background-color: #01baff;color: #FFF;' bindtap='confirm' class='send'>确认</button>
+  </view>
+  <view class="list__body-arrow" bindtap="onClickLog">
+    <view class="list__title--main">查看摔倒记录</view>
+    <wxc-icon wx:if="{{arrow}}" class="list__desc--arrow" type="arrow-right" size="30" color="#c2c2c2" _pid="{{_pid}}"></wxc-icon>
+  </view>
+</view>
+<view class='body-view-loading'>
+  <loading hidden="{{loadHidden}}">
+    等待后台响应中...
+  </loading>
+</view>
+
+<view class='body-view-toast'>
+  <toast hidden="{{toastHidden}}" duration="2000" bindchange="toastChange">{{toastTip}}</toast>
+</view>
+
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{!showFailModal}}"></view>
+<modal class="modal-warn" hidden="{{showFailModal}}" no-cancel bindconfirm="modalFailChangeTip">{{tip}}</modal>

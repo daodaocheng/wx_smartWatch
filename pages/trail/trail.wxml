@@ -1,0 +1,22 @@
+<view class='calendar_text'>
+  <text bindtap='calendar' class='cal_text'>{{calendar}}</text>
+</view>
+<view class='calendar' style='width: 100%; height: auto'>
+  <view wx:if="{{showView}}" style="width: 100%; height: auto" class="datepicker-box">
+    <calendar binddayClick="dayClick" bindnextMonth="next" bindprevMonth="prev" year="{{year}}" month="{{month}}" day="{{day}}" binddateChange="dateChange"  weeks-type='cn' days-color="{{days_style}}"></calendar>
+  </view>
+</view>
+<map id="mapTrail"  
+    scale="{{scale}}" 
+    show-location =true
+    style="width: 100%; height: 92%; position:relative; z-index: 1000;"
+    latitude='{{srartPos.lat}}'
+    longitude='{{srartPos.lon}}'
+    wx:if='{{true}}'
+    polyline='{{polyline}}'
+    controls='{{controls}}'
+    bindcontroltap="refresh"
+    markers='{{markers}}'
+    bindregionchange='regionChangeTrail'>
+    <cover-view wx:if="{{showModal}}" class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove"></cover-view>
+</map>

@@ -1,0 +1,147 @@
+<view>
+  <!-- wxp template -->
+  <view class='banner'>
+    <view class="avatar">
+      <button wx:if="{{!hasUserInfo && canIUse}}" class='requireBtn' open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取头像昵称</button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      </block>
+    </view>
+    <view class="nickname">
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+  <wxc-notice scroll="{{false}}" close="{{false}}" bg-color="#ff2a00" bg-rgba="rgba(255, 147, 0, 0)" show-icon="{{false}}" notice="{{notice}}" isShow='{{showNotice}}'></wxc-notice>
+  <view class="list" id='dev_list'>
+    <block wx:for="{{titleShow}}">
+      <view class="list__body list__{{mode}}" data-ship="{{item.detail}}" data-devid="{{item.devid}}" data-health='{{item.sicknesses_value}}' data-mobile="{{item.mobile}}" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongpress="bingLongTap" bindtap="onClick">
+        <image class="list__image" src="../../assets/watch.png" mode="aspectFill"></image>
+
+        <wxc-icon class="list__icon" size="38" type="{{icon}}" color="{{iconColor}}" _pid="{{_pid}}"></wxc-icon>
+
+        <view class="list__title">
+          <view class="list__title--main">{{item.title}}</view>
+          <view class="list__title--sub">电话:{{item.mobile}}</view>
+        </view>
+        <view wx:if="{{item.dot}}" style="background: {{item.dotColor}}" class="list__desc--dot"></view>
+
+        <slot></slot>
+
+        <view class="list__desc--text">{{item.desc}}</view>
+
+        <view class="battery">
+          <image class='battery_image' src='{{item.battery_image}}'></image>
+        </view>
+
+        <wxc-icon class="list__desc--arrow" type="arrow-right" size="30" color="#c2c2c2" _pid="{{_pid}}"></wxc-icon>
+      </view>
+    </block>
+  </view>
+  <modal class='modalSecond' confirm-text='确定' cancel-text="取消" hidden='{{modalHiddenDelete}}' bindconfirm='modalChangeDelete' bindcancel='modalChangeDeleteCancle'>确认删除此设备？
+  </modal>
+  <button bindtap='floatBtn' class='floatCicle'>
+    <view class='floatCicle'>
+      <image src='../../assets/plus.png' mode='aspectFit'></image>
+    </view>
+  </button>
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">{{ralation}}</view>
+    <view class="modal-content">
+      <view class="btn-left" id='safeArea' bindtap="onSafe" data-status="cancel">安全守护</view>
+      <view class="btn-right" id='healthData' bindtap="onHealth" data-status="confirm">健康数据</view>
+    </view>
+    <view class="modal-content">
+      <view class="btn-left" id='fallAlarm' bindtap="onAlarm" data-status="confirm">摔倒报警</view>
+      <!-- <view class="btn-right" id='trail' bindtap="onTrail" data-status="confirm">运动轨迹</view> -->
+      <view class="btn-right" id='healthWeekly' bindtap="onReport" data-status="confirm">健康周报</view>
+    </view>
+    <view class="modal-content">
+      <view class="btn-left" id='watchListener' bindtap="onListener" data-status="confirm">手表监听</view>
+      <view class="btn-right" id='watchSet' bindtap="onSet" data-status="confirm">手表设置</view>
+    </view>
+    <view class="modal-content" style='flex-direction: row;justify-content: center;margin-top:30rpx'>
+      <image src='../../assets/tel.png' style='height:100rpx; width:100rpx' bindtap='callThePhone'></image>
+    </view>
+  </view>
+
+  <view class='body-view-loading'>
+    <loading hidden="{{loadHidden}}">
+      正在发送监听指令...
+    </loading>
+  </view>
+
+  <view class='body-view-toast'>
+    <toast hidden="{{toastHidden}}" duration="3000" bindchange="toastChange">
+      后台响应成功！等待手表回拨...
+    </toast>
+  </view>
+
+  <button bindtap='floatBtn' class='floatCicle'>
+    <view class='floatCicle'>
+      <image src='../../assets/plus.png' mode='aspectFit'></image>
+    </view>
+  </button>
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{modalShowMobile_mask}}"></view>
+  <view class="modal-dialog" wx:if="{{modalShowMobile}}">
+    <view class="modal-title">注册新用户</view>
+    <view class="modal-content-mobile">
+      <view class="input-wrap">
+        <wxc-input title="手机号：" type="number" value="{{tel}}" placeholder="请输入您的手机号" maxlength="11" data-type="mobile" bind:input="onInputTel" bind:blur="onBlurThird">
+        </wxc-input>
+      </view>
+      <button class='rigest' bindtap='modalChangeMobile'>注册</button>
+    </view>
+  </view>
+  <!-- <modal class='modalSecond' title='注册新用户' confirm-text='注册并授权' no-cancel open-type="getUserInfo" hidden='{{modalHiddenMobile}}' bindconfirm='getUserInfo'>
+    <view class="input-wrap">
+      <wxc-input title="手机号：" type="number" value="{{tel}}" placeholder="请输入您的手机号" maxlength="11" data-type="mobile" bind:input="onInputTel" bind:blur="onBlurThird">
+      </wxc-input>
+    </view>
+  </modal> -->
+  <modal class='modal' title='添加手表' confirm-text='添加' cancel-text="取消" hidden='{{modalHidden}}' bindconfirm='modalChange' bindcancel='modalChangeCancle'>
+    <view class="input-wrap">
+      <wxc-input type="text" value="{{watchCode}}" placeholder="请输入手表编码" bind:input="onInput" bind:blur="onBlur">
+      </wxc-input>
+      <view class="tips">
+        <view class="scan-wrap" data-type="mobile" bindtap="scanWatchCode">
+          <wxc-icon type="scan" size="50" color="#ccc"></wxc-icon>
+        </view>
+      </view>
+    </view>
+  </modal>
+  <modal class='modalSecond' title='完善信息' confirm-text='确定' cancel-text="取消" hidden='{{modalHiddenSecond}}' bindconfirm='modalChangeSecond' bindcancel='modalChangeSecondCancle'>
+    <view class="input-wrap">
+      <wxc-input type="number" src="../../../../assets/info_tel_28x40.png" value="{{mobileNum}}" placeholder="请输入手表的电话号码" data-type="mobile" bind:input="onInputMobile">
+      </wxc-input>
+      <wxc-input type="text" src="../../../../assets/info_ralation.png" value="{{ralation}}" placeholder="请输入设备使用者与我的关系" bind:input="onInputRalation">
+      </wxc-input>
+      <view class='genda'>
+        <image class="input__icon_genda" mode="aspectFit" src="../../../../../assets/info_genda.png"></image>
+        <text class='txt_genda'>设备使用者的性别</text>
+        <radio-group class='radio-group' bindchange='radioChange'>
+          <label class='radio' wx:for='{{items}}'>
+            <radio value='{{item.name}}' checked='{{item.checked}}'>{{item.value}}</radio>
+          </label>
+        </radio-group>
+      </view>
+      <wxc-input type="text" src="../../../../assets/info_age.png" value="{{age}}" type="number" data-type="mobile" placeholder="请输入设备使用者的年龄" bind:input="onInputAge">
+      </wxc-input>
+      <view class='health_container' bindtap='onChangHealth'>
+        <image class='health_image' src="../../assets/info_disease.png"></image>
+        <text class='health_text'>点此选择设备使用者的健康状况：</text>
+      </view>
+      <!-- <wxc-input type="text" value="{{disease}}" placeholder="" bind:input="onInputDisease">
+      </wxc-input> -->
+    </view>
+  </modal>
+  <modal class="modal-warn" hidden="{{modalHiddenTip}}" no-cancel bindconfirm="modalChangeTip">{{tip}}</modal>
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModalHealth}}"></view>
+  <modal class='modal_health' confirm-text='确定' cancel-text='取消' hidden='{{modal_health_hidden}}' bindcancel='modal_health_cancel' bindconfirm='modal_health_change'>
+    <checkbox-group bindchange="checkboxChange" class='checkbox-group-health'>
+      <label class="checkbox" wx:for="{{sicknesses}}">
+        <checkbox value="{{item.value}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </checkbox-group>
+  </modal>
+</view>

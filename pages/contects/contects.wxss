@@ -1,0 +1,111 @@
+/* pages/watchSet/watchSet.wxss */
+.input-wrap {
+  position: relative;
+  margin: 20rpx 10rpx 0 10rpx;
+}
+
+.list {
+  padding-top: 25rpx;
+  padding-right: 50rpx;
+}
+
+.list__body {
+  display: flex;
+  align-items: center;
+  min-height: 90rpx;
+  line-height: 1.4;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  margin-top: 25rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 8px;
+  font-size: 32rpx;
+  color: #333;
+  width: 100%;
+}
+
+.list__desc--text {
+  /* border: solid 1px #333; */
+  width: 40%;
+}
+
+.list__none {
+  border: none;
+}
+
+.list__title--main {
+  /* border: solid 1px #333; */
+  width: 50%;
+  margin-left: 25rpx;
+}
+
+.list__desc--arrow {
+  margin-left: 8rpx;
+  width: 10%;
+}
+
+.datepicker-box{
+  width: auto;
+  height: 500rpx;
+  border:1px solid red;
+}
+
+.modal-warn {
+  position:absolute;
+  z-index: 9999;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.footer {
+  width: auto;
+  height: 10%;
+  border: 1px solid #f2f2f2;
+}
+.btn-content {
+  display: flex;
+  flex-direction: row;
+  font-size: 34rpx;
+  text-align: center;
+  width: 100%;
+  line-height: 86rpx;
+}
+.btn-left {
+  width: 100%;
+  height: 100%;
+  color: #009cce;
+  background-color: #fff;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.modal-warn {
+  position:absolute;
+  z-index: 9999;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}

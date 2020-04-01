@@ -1,0 +1,10 @@
+<!--pages/accessLog/accessLog.wxml-->
+<view class='list'>
+  <block wx:for="{{titleLog}}">
+    <view class="list__body list__{{mode}}">
+      <view class="list__title--main">{{item.dateAndTime}}</view>
+      <view class="list__desc--text">{{item.relation}}{{item.state=='1'?'离开':'进入'}}{{item.safeName}}</view>
+      <slot></slot>
+    </view>
+  </block>
+</view>
